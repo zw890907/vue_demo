@@ -13,14 +13,22 @@ const debug = process.env.NODE_ENV !== 'production'
 export default new Vuex.Store({
   strict: debug,
   state: {
-    tip: '欢迎使用Vuex'
+    count: 50
   },
+  // 实时监听state值的变化
   getters: {
-    tip: state => state.tip
+    count: state => state.count
   },
   mutations: {
-    SET_TIP (state, data) {
-      state.tip = data
+    addCount (state, data) {
+      state.count += data
+    },
+    delCount (state, data) {
+      if (state.count > 0) {
+        state.count -= data
+      } else {
+        state.count = 0
+      }
     }
   },
   actions: {

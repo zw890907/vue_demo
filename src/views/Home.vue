@@ -1,9 +1,13 @@
 <template>
   <div class="home">
     <p class="welcomeUse">欢迎使用vue</p>
-    {{tip}}
-    {{moduleTip}}
-    <el-button type="primary" @click="get()">Button组件</el-button>
+    {{count}}
+    {{shopCount}}
+    <el-button type="primary" @click="getShopList()">Button组件</el-button>
+    <div>
+      <el-button type="success" @click="add()">+</el-button>
+      <el-button type="danger" @click="del()">-</el-button>
+    </div>
   </div>
 </template>
 
@@ -22,7 +26,7 @@ export default {
     })
   },
   methods: {
-    get () {
+    getShopList () {
       const url = '/api/tab/1?start=0'
       ajax.getShopList(url).then(res => {
         console.log(res)
@@ -30,23 +34,11 @@ export default {
         console.log(error)
       })
     },
-    get2 () {
-      const data = new URLSearchParams()
-      data.append('param', 1)
-      ajax.getShopList(data).then(res => {
-        console.log(res)
-      }).catch(error => {
-        console.log(error)
-      })
+    add () {
+      this.$store.commit('addCount', 1)
     },
-    post () {
-      const data = new URLSearchParams()
-      data.append('param', 1)
-      ajax.getShopList(data).then(res => {
-        console.log(res)
-      }).catch(error => {
-        console.log(error)
-      })
+    del () {
+      this.$store.commit('delCount', 1)
     }
   }
 }

@@ -2,16 +2,16 @@
  * demo模块的vuex
 */
 const state = {
-  moduleTip: '欢迎使用Vuex模块'
+  shopCount: '100'
 }
 
 const getters = {
-  moduleTip: state => state.moduleTip
+  shopCount: state => state.shopCount
 }
 
 const mutations = {
-  SET_MODULETIP (state, data) {
-    state.moduleTip = data
+  SET_COUNT (state, data) {
+    state.shopCount = data
   }
 }
 
